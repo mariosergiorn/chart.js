@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Chart JavaScript</title>
+
+    </head>
+    <body>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
+
+    <!-- Criação do primeiro container contendo 3 tipos de gráficos [Pie, Bar e Doughnut].-->
+    <div class="container">
+        
+        <div class="primeiroGrafico" style="width: 400px; height: 300px;">
+            <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+
+        <div class="segundoGrafico" style="width: 400px; height: 300px; position: relative; bottom: 300px; left: 35%;">
+            <canvas id="myChart2" width="400px" height="400px"></canvas>
+        </div>
+
+        <div class="terceiroGrafico" style="width: 400px; height: 300px; position: relative; bottom: 600px; left: 70%;">
+            <canvas id="myChart3" width="400px" height="400px"></canvas>
+        </div>
+
+    </div>
+
+    <!-- Fim Div container.-->
+
+    <div class="container">
+
+        <div class="quartoGrafico" style="width: 400px; height: 300px; position: relative;">
+            <canvas id="myChart4" width="400px" height="400px"></canvas>
+        </div>
+
+    </div>
+
+        
+        <script>
+
+        //Varivel que armazena o elemento onde está contido o gráfico.
+        let grafico = document.getElementById("myChart").getContext("2d");
+
+        //Inicia a criação do primeiro gráfico
+        let chart = new Chart(grafico, {
+            //Define o tipo do gráfico a ser exibido.
+            type: "pie",
+
+            //Define os dados do gráfico [Cor, Legenda, dados que serão exibidos, titulo...]
+            data: {
+                labels: ['Vermelho', 'Azul', 'Amarelo', 'Verde'],
+                
+                datasets: [{
+                    
+                    data: [5, 8, 15, 40],
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)',
+                        'rgb(80, 253, 167)']
+                    
+                }
+            ]
+
+            },
+
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: "Exemplo Gráfico Pizza"
+                },
+
+                //Oculta as legendas do bar, definidos na label.
+                legend: {
+                            display: false
+                        }
+                
+            }
+
+        });
+
+        let segundoGrafico = document.getElementById("myChart2").getContext("2d");
+
+        let chart2 = new Chart(segundoGrafico, {
+            type: "bar",
+
+            data: {
+                labels: ['Janeiro' , 'Fevereiro', 'Março', 'Abril'],
+
+                datasets: [{
+
+                    barPercentage: 0.5,
+                    barThickness: 6,
+                    maxBarThickness: 8,
+                    minBarLength: 2,
+                    data: [20, 25, 40, 50],
+                    backgroundColor: [
+
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)',
+                        'rgb(80, 253, 167)'
+                    ]
+                },
+                
+                {
+                    data: [30, 35, 45, 70],
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)',
+                        'rgb(80, 253, 167)'
+                    ]
+
+                },
+            
+            ]
+
+            },
+
+            options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: "Exemplo Gráfico em Barras",
+
+                    },
+
+                    legend: {
+                            display: false
+                        },
+                        
+                        //Define o tamanho inicial para o gráfico ser exibido, neste caso, inicia-se do zero.
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+            }
+        }]
+    }
+
+                }
+
+        });
+
+        let terceiroGrafico = document.getElementById("myChart3").getContext("2d");
+
+        let chart3 = new Chart(terceiroGrafico, {
+
+            type: "doughnut",
+
+            data:{
+
+                datasets: [{
+                    data: [10, 20, 30],
+                    backgroundColor: [
+
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                    ],
+                        hoverOffset: 4
+
+                }],
+
+                labels: ['ASUS', 'ADATA', 'BIOSTAR']
+
+            }
+
+        });
+        
+        
+        </script>
+    </body>
+</html>
